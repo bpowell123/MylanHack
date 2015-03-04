@@ -1,0 +1,2955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>MYL.360</title>
+  <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; minimal-ui"/>
+    <!-- Make it fullscreen / hide the browser URL bar -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />  
+    <!--
+        Give the status bar another colour
+        Valid values for "content" are: "default" (white), "black" and "black-translucent"
+        If set to "default" or "black", the content is displayed below the status bar. If set to
+        "black-translucent", the content is displayed under the bar.
+    -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!--
+        Add a Home icon.
+        By default, Mobile Safari searches for a file named "apple-touch-icon.png" in the root directory of your website.
+        If it can't find any image there, you can specify it using the code below. Make sure the image has a dimension
+        of 114x114 and is a PNG file. The glossy finish and resizing for the different devices will be done automatically.
+        
+        In case you don't want the gloss applied, use "apple-touch-icon-precomposed" instead of "apple-touch-icon".
+    -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <!--
+        Add a splash screen / startup image.
+        Take note this file exactly needs to be 320x460 for iPhone or 1004x768 for iPad, and is a PNG file.
+        Also, this only works if "apple-mobile-web-app-capable" is set to "yes".
+    -->
+    <link rel="apple-touch-startup-image" href="images/startup.png" />
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/plugin.css">
+  <!--[if lt IE 9]>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/html5.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&libraries=geometry,visualization&sensor=false"></script>
+  <script>
+  function BlockElasticScroll(event) {
+      event.preventDefault() ;
+  }
+
+  // In JavaScript, you can use "window.navigator.standalone" to detect wether
+  // the page is being viewed on your website, or as a standalone application.
+
+  // You can also the detect the device the user is using.
+  // var isIPhone = navigator.userAgent.indexOf("iPhone") != -1 ;
+  // var isIPod = navigator.userAgent.indexOf("iPod") != -1 ;
+  // var isIPad = navigator.userAgent.indexOf("iPad") != -1 ;
+  // var isIOs = isIPhone || isIPod || isIPad ;
+
+  </script>
+  <script>
+    function fixLinks() {
+    var a=document.getElementsByTagName("a");
+    for(var i=0;i<a.length;i++) {
+        if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
+            a[i].onclick=function() {
+                    window.location=this.getAttribute("href");
+                    return false; 
+            }
+        }
+    }
+  }
+  </script
+</head>
+<body onload="fixLinks()">
+  <!-- header -->
+	<header id="header" class="navbar">
+    <ul class="nav navbar-nav navbar-avatar pull-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
+          <span class="hidden-xs-only">Stephen Mildner</span>
+          <span class="thumb-small avatar inline"><img src="images/avatar.jpg" alt="Stephen Mildner" class="img-circle"></span>
+          <b class="caret hidden-xs-only"></b>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#"><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
+          <li class="divider"></li>
+          <li><a href="docs.html">Help</a></li>
+          <li><a href="signin.html">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a class="navbar-brand" href="#">MYL.360</a>
+    <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body">
+      <i class="fa fa-bars fa-lg text-default"></i>
+    </button>
+    <ul class="nav navbar-nav hidden-xs">
+      <li>
+        <div class="m-t m-b-small" id="panel-notifications">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-comment-o fa-fw fa-lg text-default"></i><b class="badge badge-notes bg-danger count-n">2</b></a>
+          <section class="dropdown-menu m-l-small m-t-mini">
+            <section class="panel panel-large arrow arrow-top">
+              <header class="panel-heading bg-white"><span class="h5"><strong>You have <span class="count-n">2</span> notifications</strong></span></header>
+              <div class="list-group">
+                <a href="#" class="media list-group-item">
+                  <span class="pull-left thumb-small"><img src="images/avatar.jpg" alt="John said" class="img-circle"></span>
+                  <span class="media-body block m-b-none">
+                    Moved to Bootstrap 3.0<br>
+                    <small class="text-muted">23 June 13</small>
+                  </span>
+                </a>
+                <a href="#" class="media list-group-item">
+                  <span class="media-body block m-b-none">
+                    first v.1 (Bootstrap 2.3 based) released<br>
+                    <small class="text-muted">19 June 13</small>
+                  </span>
+                </a>
+              </div>
+              <footer class="panel-footer text-small">
+                <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                <a href="#">See all the notifications</a>
+              </footer>
+            </section>
+          </section>
+        </div>
+      </li>
+    </ul>
+    <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
+      <i class="fa fa-search text-muted"></i>
+      <input type="text" class="input-sm form-control" placeholder="Search">
+    </form>
+	</header>
+  <!-- / header -->
+  <!-- nav -->
+  <nav id="nav" class="nav-primary hidden-xs nav-vertical">
+    <ul class="nav" data-spy="affix" data-offset-top="50">
+      <li><a href="index.html"><i class="fa fa-globe fa-lg"></i><span>Snapshot</span></a></li>
+      <li><a href="competitors.html"><i class="fa fa-bar-chart-o fa-lg"></i><span>Stock</span></a></li>
+      <li class="active"><a href="news.html"><i class="fa fa-bullhorn fa-lg"></i><span>News</span></a></li>
+      <li><a href="markets.html"><i class="fa fa-bullseye fa-lg"></i><span>Markets</span></a></li>
+      <li><a href="regulatory.html"><i class="fa fa-legal fa-lg"></i><span>Regulatory</span></a></li>
+      <li><a href="social.html"><i class="fa fa-users fa-lg"></i><span>Social</span></a></li>
+    </ul>
+  </nav>
+  <!-- / nav -->
+
+
+
+
+
+
+ <div class="col-xs-11" style="left: 100px;">
+<!-- scrollable inbox widget -->
+          <section class="panel">
+            <header class="panel-heading">
+              <ul class="nav nav-pills pull-right">
+                <li>
+                  <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down fa-lg text-active"></i><i class="fa fa-caret-up fa-lg text"></i></a>
+                </li>
+              </ul>
+              <span class="label label-large bg-default">9</span> News
+            </header>
+            <section style="height:100%" class="panel-body scrollbar scroll-y m-b">
+                            
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-success"></i>
+
+                    <i class="fa fa-flag fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">12:18</strong><br>
+
+                    <small class="label bg-light">pm</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/money/business/2014/12/10/walgreens-ceo-wasson-steps-down/20217339/" class="h4">Walgreens CEO announces plans
+
+
+to step down</a>
+
+                  <small class="block">The announcement comes as Walgreens gets set to complete Alliance Boots deal.</small>
+
+                </div>
+
+              </article>
+
+              <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-danger"></i>
+
+                    <i class="fa fa-file fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">17</strong><br>
+
+                    <small class="label bg-light">feb</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/opinion/2014/08/13/tax-corporate-patriotism-column/13912917/" class="h4">Corporate taxes aren't corporate
+
+
+patriotism: Column</a>
+
+                  <small class="block">America's outdated corporate tax system hurts businesses internationally.</small>
+
+                </div>
+
+              </article>
+
+             
+
+                                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" class="h4 text-success">Actavis buying Warner
+
+
+Chilcott in $8.5B deal</a>
+
+                  <small class="block">Acquisition creates third-biggest specialty pharmaceutical company in U.S.</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" class="h4 text-success">Actavis buying Warner
+
+
+Chilcott in $8.5B deal</a>
+
+                  <small class="block">Acquisition creates third-biggest specialty pharmaceutical company in U.S.</small>
+
+                </div>
+
+              </article>
+
+ 
+
+ 
+
+                                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" class="h4 text-success">Washingon Kastles
+
+
+visit the White House</a>
+
+                  <small class="block">For the first time in the 38-year history of the WTT, the title team met the president.</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" class="h4 text-success">Actavis buying Warner
+
+
+Chilcott in $8.5B deal</a>
+
+                  <small class="block">Acquisition creates third-biggest specialty pharmaceutical company in U.S.</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.usatoday.com/story/sports/tennis/2013/07/28/kastles-win-3rd-consecutive-world-teamtennis-title/2595061/" class="h4 text-
+
+
+success">Kastles win 3rd consecutive World TeamTennis title</a>
+
+                  <small class="block">The Kastles defeated the Lasers 25-12 on Sunday night in the Mylan World TeamTennis finals.</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/business/2014/jul/16/abbvie-shire-takeover-risk-us-halt-tax-inversion">AbbVie-Shire takeover at risk following US
+
+
+calls to halt tax inversion</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/global-development/2014/apr/25/sundance-short-film-competition-development-stories" class="h4 text-
+
+
+success">Sundance short film competition invites innovative development stories</a>
+
+                  <small class="block">Global development</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href=" http://www.theguardian.com/world/2014/aug/31/us-government-helpless-tax-avoiding-corporations-cross-border-canada-burger-king" class="h4
+
+
+text-success">US government helpless as tax-avoiding firms head for the exit</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/stage/2014/apr/27/the-believers-tricycle-review" class="h4 text-success">The Believers review – thrilling
+
+
+theatrical conjuring tricks, but no big revelations</a>
+
+                  <small class="block">Stage</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href=" http://www.theguardian.com/business/2014/jul/14/shire-board-backs-abbvie-offer" class="h4 text-success">AbbVies raised proposal for Shire
+
+
+gets board backing</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/business/2004/jul/27/usnews.internationalnews1" class="h4 text-success">$4bn deal heats up generic drugs war</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/business/marketforceslive/2013/feb/05/glaxosmithkline-india-reckitt-benckiser-suboxone" class="h4 text-
+
+
+success">GlaxoSmithKline raises stake in Indian business while Reckitt shakes off suboxone worries</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/sustainable-business/2014/jul/22/tax-havens-avoidance-pay-taxes-walgreens-google-microsoft" class="h4 text-
+
+
+success">Ending the race to the bottom: why responsible companies should pay taxes</a>
+
+                  <small class="block">Guardian Sustainable Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/business/marketforceslive/2010/may/20/glaxosmithkline" class="h4 text-success">GlaxoSmithKline dips after German
+
+
+patent ruling</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theguardian.com/business/marketforceslive/2012/mar/30/astrazeneca-seroquel-patent-ftse" class="h4 text-success">AstraZeneca climbs
+
+
+after US Seroquel patent victory, as mining groups lift FTSE 100 higher</a>
+
+                  <small class="block">Business</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href=">http://n.pr/un84af" class="h4 text-success">Two Women Tapped To Lead Major Companies</a>
+
+                  <small class="block">Two Fortune 500 companies have selected women as their incoming chief executive officers. By New Years Day, the ranks of female
+
+
+corporate leaders will set a record for the largest number of women serving as CEOs at the same time.</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.beststocks2015.com/top-10-supermarket-companies-to-watch-for-2015-2.html" class="h4 text-success">Top 10 Supermarket Companies To
+
+
+Watch For 2015</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.jdsupra.com/legalnews/the-medicines-co-v-mylan-inc-31271/" class="h4 text-success">The Medicines Co. v. Mylan Inc.</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.gurufocus.com/news/318866/impax-laboratories-inc-steps-into-profitable-zone" class="h4 text-success">Articles by reports.droy</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.gurufocus.com/news/318787/gilead-taking-giant-leap-to-serve-the-hepatitis-c-market-of-developing-countries" class="h4 text-
+
+
+success">Gilead Taking Giant Leap To Serve The Hepatitis C Market Of Developing Countries</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.4-traders.com/news/Research-and-Markets-Global-Congestive-Heart-Failure-Drugs-Market-2015-2019-with-AstraZeneca-Brist--19943351/"
+
+
+class="h4 text-success">Research and Markets: Global Congestive Heart Failure Drugs Market 2015-2019 with AstraZeneca, Bristol-Myers Squibb, GSK, Merck & Co., Mylan,
+
+
+Novartis, Pfizer, Sanofi & Valeant Pharmaceuticals Dominating</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.listocks.com/best-medical-companies-for-2015-7.html" class="h4 text-success">Best Medical Companies For 2015</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="https://irdirect.net/pr/release/bw/20150227005153" class="h4 text-success">Research and Markets: Global Congestive Heart Failure Drugs Market
+
+
+2015-2019 with AstraZeneca, Bristol-Myers Squibb, GSK, Merck & Co., Mylan, Novartis, Pfizer, Sanofi & Valeant Pharmaceuticals Dominating</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.topstocksblog.com/10-best-india-stocks-to-invest-in-2015-2.html" class="h4 text-success">10 Best India Stocks To Invest In
+
+
+2015</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://investorplace.com/2015/02/biggest-movers-in-healthcare-stocks-now-hznp-knd-cemp-sgen-hznp-knd-cemp/" class="h4 text-success">Biggest
+
+
+Movers in Healthcare Stocks Now – HZNP KND CEMP SGEN</a>
+
+                  <small class="block">GB News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.prnewswire.com/news-releases/mylan-completes-acquisition-of-abbotts-non-us-developed-markets-specialty-and-branded-generics-
+
+
+business-300042793.html" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed</a>
+
+                  <small class="block">IT News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.optionmonster.com/news/article.php?page=gdp_chicago_pmi_lead_calendar_101607.html" class="h4 text-success">GDP, Chicago PMI lead
+
+
+calendar - optionMONSTER (02/27/15)</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://article.wn.com/view/2015/02/27/Mylan_Signs_Exclusive_Agreement_with_Gilead_Sciences_to_Dist/" class="h4 text-success">Mylan Signs
+
+
+Exclusive Agreement with Gilead Sciences to Distribute Sovaldi® and Harvoni® in India (Mylan Inc)</a>
+
+                  <small class="block">GB News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.biospace.com/news/mylan-inc-completes-acquisition-of-abbotts-non-u-s/366689" class="h4 text-success">Mylan Inc Completes
+
+
+Acquisition Of Abbotts Non U S Developed Markets Specialty And Branded Generics Business</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.zacks.com/stock/news/166094/will-endo-internationas-endp-beat-on-earnings-in-q4" class="h4 text-success">Will Endo Internationa's
+
+
+(ENDP) Beat on Earnings in Q4?</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+<div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.zacks.com/stock/news/166094/wil-endo-internationas-endp-beat-on-earnings-in-q4" class="h4 text-success">Will Endo Internationa's
+
+
+(ENDP) Beat on Earnings in Q4?</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.fox14tv.com/story/28221527/1" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed Markets Specialty
+
+
+And Branded Generics Business</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.bizjournals.com/pittsburgh/news/2015/02/27/mylan-inversion-deal-completed.html" class="h4 text-success">Mylan inversion deal
+
+
+completed</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theglobeandmail.com/globe-investor/inside-the-market/market-updates/calendar-what-investors-need-to-know-for-the-week-
+
+
+ahead/article23223792/?cmpid=rss1" class="h4 text-success">Calendar: What investors need to know for the week ahead</a>
+
+                  <small class="block">CA News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="https://finance.yahoo.com/news/mylan-completes-acquisition-abbotts-non-173000573.html" class="h4 text-success">Mylan Completes Acquisition Of
+
+
+Abbotts Non-U.S. Developed Markets Specialty And Branded Generics Business</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.beststocks2015.com/hot-medical-companies-to-own-for-2015.html" class="h4 text-success">Hot Medical Companies To Own For 2015</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.cnbc.com/id/102464548" class="h4 text-success">After strong February, big jobs report in focus</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://moneymorning.com/2015/02/27/djia-index-notches-5-6-gain-in-february/" class="h4 text-success">Another of Our Top Stocks to Invest in
+
+
+Is Up 50% in 2015</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://jutiagroup.com/20150227-market-update-lockheed-martin-corporation-nyselmt-lockheed-sikorsky-venture-awarded-2-0-billion-helicopter-
+
+
+support-deal/" class="h4 text-success">Market Update: Abbott Laboratories (NYSE:ABT) – Mylan Completes Acquisition Of Abbott’s Non-U.S. Developed Markets Specialty And
+
+
+Branded Generics Business</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.israelnews.net/index.php/sid/230634831" class="h4 text-success">Earnings Expected to Increase for Mylan</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.forbes.com/sites/narrativescience/2015/02/27/earnings-expected-to-increase-for-mylan/" class="h4 text-success">Earnings Expected
+
+
+to Increase for Mylan</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://health-fitness.news-articles.net/content/mylan-completes-acquisition-abbotts-non-developed-markets-specialty-branded-generics-
+
+
+business.xhtml" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed Markets Specialty And Branded Generics Business</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theglobeandmail.com/globe-investor/inside-the-market/market-updates/calendar-what-investors-need-to-know-for-the-week-
+
+
+ahead/article23223792" class="h4 text-success">Calendar: What investors need to know for the week ahead</a>
+
+                  <small class="block">CA News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="https://finance.yahoo.com/news/endo-internationas-endp-beat-earnings-211809198.html" class="h4 text-success">Will Endo Internationals (ENDP)
+
+
+Beat on Earnings in Q4? - Analyst Blog</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.nasdaq.com/article/can-anything-slow-medivation-cm449140" class="h4 text-success">GDP, Chicago PMI lead calendar</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.topstocksblog.com/top-quality-companies-to-buy-right-now-4.html" class="h4 text-success">Top Quality Companies To Buy Right
+
+
+Now</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.cbs8.com/story/28221527/1" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed Markets Specialty
+
+
+And Branded Generics Business</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.beststocks2016.com/10-best-india-stocks-to-buy-for-2015-2.html" class="h4 text-success">10 Best India Stocks To Buy For 2015</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.theglobeandmail.com/globe-investor/inside-the-market/market-updates/calendar-what-investors-need-to-know-for-the-week-
+
+
+ahead/article23223792/" class="h4 text-success">Calendar: What investors need to know for the week ahead - The Globe and Mail</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.forbes.com/sites/narrativescience/2015/02/27/loss-expected-to-widen-for-arena-pharmaceuticals-3/" class="h4 text-success">Loss
+
+
+Expected to Widen for Arena Pharmaceuticals - Forbes</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.newswest9.com/story/28221511/1" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed Markets
+
+
+Specialty And Branded Generics Business</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.fox14tv.com/story/28221511/1" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed Markets Specialty
+
+
+And Branded Generics Business</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://article.wn.com/view/2015/02/27/Halozyme_Therapeutics_Loss_Likely_to_Narrow/" class="h4 text-success">Halozyme Therapeutics Loss Likely
+
+
+to Narrow</a>
+
+                  <small class="block">GB Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.medschat.com/Discuss/what-is-a-white-oval-pill-with-m-b2-its-small-for-280028.htm" class="h4 text-success">What Is A White Oval
+
+
+Pill With M B2 Its Small For</a>
+
+                  <small class="block">US Discussions</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.nasdaq.com/article/texas-instruments-txn-unveils-new-wireless-mcu-platform-analyst-blog-cm449522" class="h4 text-success">Will
+
+
+Endo Internationals (ENDP) Beat on Earnings in Q4? - Analyst Blog</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://article.wn.com/view/2015/02/27/Mylan_Completes_Acquisition_Of_Abbotts_NonUS_Developed_Marke/" class="h4 text-success">Mylan Completes
+
+
+Acquisition Of Abbotts Non-U.S. Developed Markets Specialty And Branded Generics Business</a>
+
+                  <small class="block">Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.zacks.com/stock/news/166104/intercept-pharmaceuticals-icpt-will-it-miss-q4-earnings" class="h4 text-success">Intercept
+
+
+Pharmaceuticals (ICPT): Will It Miss Q4 Earnings? 28,</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.zacks.com/stock/news/166104/intercept-pharmaceuticals-icpt-wil-it-mis-q4-earnings" class="h4 text-success">Intercept
+
+
+Pharmaceuticals (ICPT): Will It Miss Q4 Earnings? - February 28, 2015</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.wset.com/story/28221511/1" class="h4 text-success">Mylan Completes Acquisition Of Abbotts Non-U.S. Developed Markets Specialty
+
+
+And Branded Generics Business</a>
+
+                  <small class="block">US Discussions</small>
+
+                </div>
+
+              </article>
+
+ 
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.nasdaq.com/article/intercept-pharmaceuticals-icpt-will-it-miss-q4-earnings-analyst-blog-cm449597" class="h4 text-
+
+
+success">Intercept Pharmaceuticals (ICPT): Will It Miss Q4 Earnings? - Analyst Blog - NASDAQ.com</a>
+
+                  <small class="block">Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.barchart.com/headlines/story/5973328/intercept-pharmaceuticals-icpt-will-it-miss-q4-earnings-analyst-blog" class="h4 text-
+
+
+success">Intercept Pharmaceuticals (ICPT): Will It Miss Q4 Earnings? - Analyst Blog</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="https://finance.yahoo.com/news/intercept-pharmaceuticals-icpt-miss-q4-010101462.html" class="h4 text-success">Intercept Pharmaceuticals
+
+
+(ICPT): Will It Miss Q4 Earnings? - Analyst Blog</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.law360.com/articles/626064/apple-still-top-ip-target-but-pharma-takes-more-fire" class="h4 text-success">Apple Still Top IP
+
+
+Target, But Pharma Takes More Fire - Law360</a>
+
+                  <small class="block">News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.beststocks2015.com/top-10-regional-bank-stocks-to-invest-in-right-now.html" class="h4 text-success">Top 10 Regional Bank Stocks To
+
+
+Invest In Right Now</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.listocks.com/hot-net-payout-yield-stocks-to-buy-for-2015-4.html" class="h4 text-success">Hot Net Payout Yield Stocks To Buy For
+
+
+2015</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://article.wn.com/view/2015/02/26/Cipher_Pharmaceuticals_acquires_three_products_from_Astion_P_y/" class="h4 text-success">Cipher
+
+
+Pharmaceuticals acquires three products from Astion Pharma (Cipher Pharmaceuticals Inc)</a>
+
+                  <small class="block">GB Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.usabeststocks.com/best-cheap-stocks-to-own-right-now-3.html" class="h4 text-success">Best Cheap Stocks To Own Right Now</a>
+
+                  <small class="block">US Blogs</small>
+
+                </div>
+
+              </article>
+
+ 
+
+                <div class="line pull-in"></div>
+
+              <article class="media">
+
+                <div class="pull-left thumb-small">
+
+                  <span class="fa-stack fa-lg">
+
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+
+                  </span>
+
+                </div>
+
+                <div class="media-body">
+
+                  <div class="pull-right media-mini text-center text-muted">
+
+                    <strong class="h4">09</strong><br>
+
+                    <small class="label bg-light">jan</small>
+
+                  </div>
+
+                  <a href="http://www.zacks.com/stock/news/166104/intercept-pharmaceuticals-icpt-will-it-miss-q4-earnings" class="h4 text-success">Intercept
+
+
+Pharmaceuticals (ICPT): Will It Miss Q4 Earnings? 28,</a>
+
+                  <small class="block">US News</small>
+
+                </div>
+
+              </article>
+            </section>
+          </section>
+          <!-- / scrollable inbox widget-->
+</div>
+
+
+
+
+
+  <!-- .modal -->
+  <div id="modal" class="modal fade">
+    <form class="m-b-none">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Post your first idea</h4>
+          </div>
+          <div class="modal-body">          
+            <div class="block">
+              <label class="control-label">Title</label>
+              <input type="text" class="form-control" placeholder="Post title">
+            </div>
+            <div class="block">
+              <label class="control-label">Content</label>
+              <textarea class="form-control" placeholder="Content" rows="5"></textarea>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Share with all memebers of first
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-sm btn-primary" data-loading-text="Publishing...">Publish</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </form>
+  </div>
+  <!-- / .modal -->
+  <!-- footer -->
+  <footer id="footer">
+    <!--<div class="text-center padder clearfix">
+      <p>
+        <small>&copy; first 2013, Mobile first web app framework base on Bootstrap</small><br><br>
+        <a href="#" class="btn btn-xs btn-circle btn-twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="btn btn-xs btn-circle btn-facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="btn btn-xs btn-circle btn-gplus"><i class="fa fa-google-plus"></i></a>
+      </p>
+    </div>-->
+  </footer>
+  <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
+  <!-- / footer -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.js"></script>
+  <!-- app -->
+  <script src="js/app.js"></script>
+  <script src="js/app.plugin.js"></script>
+  <script src="js/app.data.js"></script>
+
+  <!-- Sparkline Chart -->
+  <script src="js/charts/sparkline/jquery.sparkline.min.js"></script>  
+  <!-- Easy Pie Chart -->
+  <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script>  
+
+  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script src="js/maps/gmaps.js"></script>
+  <script src="js/maps/demo.js"></script>
+  <script>
+function setURL(url){
+    document.getElementById('iframe').src = url;
+}
+</script>
+</body>
+</html>

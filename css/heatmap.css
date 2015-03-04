@@ -1,0 +1,114 @@
+	#main {
+		position:relative;
+		width:100%;
+		height:100%;
+		padding:0px;
+		margin:auto;
+	}
+	#heatmapArea {
+		width: auto;
+		overflow: hidden;
+		height:96vh;
+		margin-right: 0px;
+		/*border:1px dashed black;*/
+	}
+	#configArea {
+		position:relative;
+		float:right;
+		width:180px;
+		padding:15px;
+		padding-top:0;
+		padding-right:0;
+	}
+/*	.btn {
+		margin-bottom: 20px;
+		padding:10px 20px 10px 20px;
+		-moz-border-radius:15px;
+		-o-border-radius:15px;
+		-webkit-border-radius:15px;
+		border-radius:15px;
+		border:2px solid black;
+		cursor:pointer;
+		color:white;
+		background-color:black;
+	}*/
+	#gen:hover{
+		background-color:grey;
+		color:black;
+	}/*
+	textarea{
+		width:260px;
+		padding:10px;
+		height:200px;
+	}
+	h2{
+		margin-top:0;
+	}*/
+	#legend {
+	background: #FFF;
+	padding: 10px;
+	margin: 5px;
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	/* IE 5-7 */
+	filter: alpha(opacity=8);
+	/* Netscape */
+	-moz-opacity: 0.8;
+	/* Safari 1.x */
+	-khtml-opacity: 0.8;
+	/* Good browsers */
+	opacity: 0.8;			
+	}
+	#legend p {
+	font-weight: bold;
+	}
+	#legend div {
+	padding-bottom: 0px;
+	}
+	.color {
+	border: 1px solid;
+	height: 12px;
+	width: 12px;
+	margin-right: 3px;
+	float: left;
+	}
+	output { 
+	  position: absolute;
+/*	  background-image: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#999999));
+	  background-image: -webkit-linear-gradient(top, #444444, #999999);
+	  background-image: -moz-linear-gradient(top, #444444, #999999);
+	  background-image: -ms-linear-gradient(top, #444444, #999999);
+	  background-image: -o-linear-gradient(top, #444444, #999999);*/
+	  width: 40px; 
+	  height: 30px; 
+	  text-align: center; 
+	  background-color:black;
+	  color: white; 
+	  border-radius: 10px; 
+	  display: inline-block; 
+	  font: bold 15px/30px Georgia;
+	  bottom: 30px;
+	  left: 90px;
+	}
+/*	output:after { 
+	  content: "";
+	  position: absolute;
+	  width: 0;
+	  height: 0;
+	  border-top: 10px solid #999999;
+	  border-left: 5px solid transparent;
+	  border-right: 5px solid transparent;
+	  top: 100%;
+	  left: 50%;
+	  margin-left: -5px;
+	  margin-top: -1px;
+	}*/
+/*	form { 
+		position: relative; 
+		margin: 50px; 
+	}
+	form label{ 
+		font-size: .8em;
+	}*/

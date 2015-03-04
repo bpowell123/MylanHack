@@ -1,5 +1,5 @@
 application: mylanhack
-version: 1
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -12,8 +12,14 @@ handlers:
 - url: /bootstrap
   static_dir: bootstrap
 
+- url: /chrome-app
+  static_dir: chrome-app
+
 - url: /css
   static_dir: css
+
+- url: /fonts
+  static_dir: fonts
 
 - url: /form
   static_dir: form
@@ -27,6 +33,35 @@ handlers:
 - url: /twitter
   static_dir: twitter
 
-- url: .*
+#root
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
+
+#serve our home page in case index.html is requested
+- url: /index.html
+  static_files: static/index.html
+  upload: static/index.html
+
+#all images and support file (css, fonts...): return file if found, 
+#otherwise the default 404 page so it can be handled by sites that link
+#directly to images.
+- url: /(.*\.(gif|png|jpg|ico|bmp|css|otf|eot|svg|ttf|woff|html))
+  static_files: static/\1
+  upload: static/(.*\.(gif|png|jpg|ico|bmp|css|otf|eot|svg|ttf|woff|html)) 
+
+- url: /images/apple-touch-icon\.png
+  static_files: images/apple-touch-icon.png
+  upload: images/apple-touch-icon\.png
+
+- url: /apple-touch-icon\.png
+  static_files: images/apple-touch-icon.png
+  upload: images/apple-touch-icon\.png
+
+- url: /images/startup\.png
+  static_files: images/startup.png
+  upload: images/startup\.png
+
+- url: /.*
   static_files: index.html
   upload: index\.html

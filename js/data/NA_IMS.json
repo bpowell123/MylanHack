@@ -1,0 +1,72 @@
+[
+  {
+    "FIELD1":"NA",
+    "FIELD2":"US",
+    "FIELD3":"37.0902400,-95.7128910",
+    "FIELD4":1494834890476,
+    "FIELD5":" 70.3 Billion ",
+    "FIELD6":" 23.1 Billion ",
+    "FIELD7":" 119 Billion ",
+    "FIELD8":" 23.9 Billion ",
+    "FIELD9":" 89.7 Billion ",
+    "FIELD10":" 17.9 Billion ",
+    "FIELD11":" 59.8 Billion ",
+    "FIELD12":" 11.9 Billion "
+  },
+  {
+    "FIELD1":"NA",
+    "FIELD2":"CANADA",
+    "FIELD3":"56.1303660,-106.3467710",
+    "FIELD4":218924659275,
+    "FIELD5":" - ",
+    "FIELD6":" - ",
+    "FIELD7":" 2.19 Billion ",
+    "FIELD8":" 438 Million ",
+    "FIELD9":" - ",
+    "FIELD10":" - ",
+    "FIELD11":" 547 Million ",
+    "FIELD12":" 109 Million "
+  },
+  {
+    "FIELD1":"NA",
+    "FIELD2":"MEXICO",
+    "FIELD3":"24.007960,--101.658594",
+    "FIELD4":89912496877,
+    "FIELD5":" - ",
+    "FIELD6":" - ",
+    "FIELD7":" 899 Million ",
+    "FIELD8":" 179 Million ",
+    "FIELD9":" 449 Million ",
+    "FIELD10":" 89.9 Million ",
+    "FIELD11":" 224 Million ",
+    "FIELD12":" 44.9 Million "
+  },
+  {
+    "FIELD1":"NA",
+    "FIELD2":"CENTRAL-AMERICA",
+    "FIELD3":"12.740493,--84.762915",
+    "FIELD4":26249460601,
+    "FIELD5":" - ",
+    "FIELD6":" - ",
+    "FIELD7":" 262 Million ",
+    "FIELD8":" 52.5 Million ",
+    "FIELD9":" 131 Million ",
+    "FIELD10":" 26.2 Million ",
+    "FIELD11":" 65.6 Millionw ",
+    "FIELD12":" 13.1 Million "
+  },
+  {
+    "FIELD1":"NA",
+    "FIELD2":"PUERTO-RICO",
+    "FIELD3":"18.185673,--66.473524",
+    "FIELD4":10898999594,
+    "FIELD5":" 499 Million ",
+    "FIELD6":" 855 Million ",
+    "FIELD7":" 762 Million ",
+    "FIELD8":" 152 Million ",
+    "FIELD9":" 381 Million ",
+    "FIELD10":" 76.2 Million ",
+    "FIELD11":" 190 Million ",
+    "FIELD12":" 38.1 Million "
+  }
+]

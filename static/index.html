@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>MYL.360</title>
+  <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; minimal-ui"/>
+    <!-- Make it fullscreen / hide the browser URL bar -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />  
+    <!--
+        Give the status bar another colour
+        Valid values for "content" are: "default" (white), "black" and "black-translucent"
+        If set to "default" or "black", the content is displayed below the status bar. If set to
+        "black-translucent", the content is displayed under the bar.
+    -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!--
+        Add a Home icon.
+        By default, Mobile Safari searches for a file named "apple-touch-icon.png" in the root directory of your website.
+        If it can't find any image there, you can specify it using the code below. Make sure the image has a dimension
+        of 114x114 and is a PNG file. The glossy finish and resizing for the different devices will be done automatically.
+        
+        In case you don't want the gloss applied, use "apple-touch-icon-precomposed" instead of "apple-touch-icon".
+    -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <!--
+        Add a splash screen / startup image.
+        Take note this file exactly needs to be 320x460 for iPhone or 1004x768 for iPad, and is a PNG file.
+        Also, this only works if "apple-mobile-web-app-capable" is set to "yes".
+    -->
+    <link rel="apple-touch-startup-image" href="images/startup.png" />
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/plugin.css">
+  <!--[if lt IE 9]>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/html5.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&libraries=geometry,visualization&sensor=false"></script>
+  <script>
+  function BlockElasticScroll(event) {
+      event.preventDefault() ;
+  }
+
+  // In JavaScript, you can use "window.navigator.standalone" to detect wether
+  // the page is being viewed on your website, or as a standalone application.
+
+  // You can also the detect the device the user is using.
+  // var isIPhone = navigator.userAgent.indexOf("iPhone") != -1 ;
+  // var isIPod = navigator.userAgent.indexOf("iPod") != -1 ;
+  // var isIPad = navigator.userAgent.indexOf("iPad") != -1 ;
+  // var isIOs = isIPhone || isIPod || isIPad ;
+
+  </script>
+  <script>
+    function fixLinks() {
+    var a=document.getElementsByTagName("a");
+    for(var i=0;i<a.length;i++) {
+        if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
+            a[i].onclick=function() {
+                    window.location=this.getAttribute("href");
+                    return false; 
+            }
+        }
+    }
+  }
+  </script
+</head>
+<body onload="fixLinks()">
+  <!-- header -->
+	<header id="header" class="navbar">
+    <ul class="nav navbar-nav navbar-avatar pull-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
+          <span class="hidden-xs-only">Stephen Mildner</span>
+          <span class="thumb-small avatar inline"><img src="images/avatar.jpg" alt="Stephen Mildner" class="img-circle"></span>
+          <b class="caret hidden-xs-only"></b>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#"><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
+          <li class="divider"></li>
+          <li><a href="docs.html">Help</a></li>
+          <li><a href="signin.html">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a class="navbar-brand" href="#">MYL.360</a>
+    <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body">
+      <i class="fa fa-bars fa-lg text-default"></i>
+    </button>
+    <ul class="nav navbar-nav hidden-xs">
+      <li>
+        <div class="m-t m-b-small" id="panel-notifications">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-comment-o fa-fw fa-lg text-default"></i><b class="badge badge-notes bg-danger count-n">2</b></a>
+          <section class="dropdown-menu m-l-small m-t-mini">
+            <section class="panel panel-large arrow arrow-top">
+              <header class="panel-heading bg-white"><span class="h5"><strong>You have <span class="count-n">2</span> notifications</strong></span></header>
+              <div class="list-group">
+                <a href="#" class="media list-group-item">
+                  <span class="pull-left thumb-small"><img src="images/avatar.jpg" alt="John said" class="img-circle"></span>
+                  <span class="media-body block m-b-none">
+                    Moved to Bootstrap 3.0<br>
+                    <small class="text-muted">23 June 13</small>
+                  </span>
+                </a>
+                <a href="#" class="media list-group-item">
+                  <span class="media-body block m-b-none">
+                    first v.1 (Bootstrap 2.3 based) released<br>
+                    <small class="text-muted">19 June 13</small>
+                  </span>
+                </a>
+              </div>
+              <footer class="panel-footer text-small">
+                <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                <a href="#">See all the notifications</a>
+              </footer>
+            </section>
+          </section>
+        </div>
+      </li>
+    </ul>
+    <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
+      <i class="fa fa-search text-muted"></i>
+      <input type="text" class="input-sm form-control" placeholder="Search">
+    </form>
+	</header>
+  <!-- / header -->
+  <!-- nav -->
+  <nav id="nav" class="nav-primary hidden-xs nav-vertical">
+    <ul class="nav" data-spy="affix" data-offset-top="50">
+      <li class="active"><a href="index.html"><i class="fa fa-globe fa-lg"></i><span>Snapshot</span></a></li>
+      <li><a href="competitors.html"><i class="fa fa-bar-chart-o fa-lg"></i><span>Stock</span></a></li>
+      <li><a href="news.html"><i class="fa fa-bullhorn fa-lg"></i><span>News</span></a></li>
+      <li><a href="markets.html"><i class="fa fa-bullseye fa-lg"></i><span>Markets</span></a></li>
+      <li><a href="regulatory.html"><i class="fa fa-legal fa-lg"></i><span>Regulatory</span></a></li>
+      <li><a href="social.html"><i class="fa fa-users fa-lg"></i><span>Social</span></a></li>
+    </ul>
+  </nav>
+  <!-- / nav -->
+  <section id="content">
+    <section class="main padder">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <!-- easypiechart -->
+            <div class="col-xs-4">              
+              <section class="panel">
+                <header class="panel-heading">
+                  <ul class="nav nav-pills pull-right">
+                    <li>
+                      <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down fa-lg text-active"></i><i class="fa fa-caret-up fa-lg text"></i></a>
+                    </li>
+                  </ul>
+                  <a href="/competitors.html">Stock Price</a>
+                </header>
+
+
+
+                <!-- TradingView Widget BEGIN -->
+                <div id="tv-miniwidget-30a13"></div>
+                <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.MiniWidget({
+                  "container_id": "tv-miniwidget-30a13",
+                  "tabs": [
+                    " "
+                  ],
+                  "symbols": {
+                    " ": [
+                      [
+                        "Mylan",
+                        "NASDAQ:MYL|1d"
+                      ],
+                      [
+                        "Teva",
+                        "NYSE:TEVA|1d"
+                      ],
+                      [
+                        "Novartis",
+                        "NYSE:NVS|1d"
+                      ],
+                      [
+                        "Abbott",
+                        "NYSE:ABT|1d"
+                      ],
+                      [
+                        "Actavis",
+                        "NYSE:ACT|1d"
+                      ],
+                      [
+                        "Sanofi",
+                        "NYSE:SNY|1d"
+                      ]
+                    ]
+                  },
+                  "gridLineColor": "#E9E9EA",
+                  "fontColor": "#83888D",
+                  "underLineColor": "#dbeffb",
+                  "trendLineColor": "#4bafe9",
+                  "activeTickerBackgroundColor": "#EDF0F3",
+                  "large_chart_url": "http://mylanhack.appspot.com/competitors.html",
+                  "noGraph": false,
+                  "width": "100%",
+                  "height": "270px"
+                });
+                </script>
+
+              </section>
+
+
+
+            </div>
+
+
+            <div class="col-xs-4">
+
+          <!-- scrollable inbox widget -->
+          <section class="panel">
+            <header class="panel-heading">
+              <ul class="nav nav-pills pull-right">
+                <li>
+                  <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down fa-lg text-active"></i><i class="fa fa-caret-up fa-lg text"></i></a>
+                </li>
+              </ul>
+              <span class="label label-large bg-default">9</span> <a href="/news.html">News</a>
+            </header>
+            <section style="height:259px" class="panel-body scrollbar scroll-y m-b">
+                            <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-success"></i>
+                    <i class="fa fa-flag fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">12:18</strong><br>
+                    <small class="label bg-light">pm</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2014/12/10/walgreens-ceo-wasson-steps-down/20217339/" target="_blank" class="h4">Walgreens CEO announces plans to step down</a>
+                  <small class="block">The announcement comes as Walgreens gets set to complete Alliance Boots deal.</small>
+                </div>
+              </article>
+              <div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                    <i class="fa fa-file fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">17</strong><br>
+                    <small class="label bg-light">feb</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/opinion/2014/08/13/tax-corporate-patriotism-column/13912917/" target="_blank" class="h4">Corporate taxes aren't corporate patriotism: Column</a>
+                  <small class="block">America's outdated corporate tax system hurts businesses internationally.</small>
+                </div>
+              </article>
+              
+                                <div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" target="_blank" class="h4 text-success">Actavis buying Warner Chilcott in $8.5B deal</a>
+                  <small class="block">Acquisition creates third-biggest specialty pharmaceutical company in U.S.</small>
+                </div>
+              </article>
+ 
+                                <div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" target="_blank" class="h4 text-success">Actavis buying Warner Chilcott in $8.5B deal</a>
+                  <small class="block">Acquisition creates third-biggest specialty pharmaceutical company in U.S.</small>
+                </div>
+              </article>
+ 
+ 
+                                <div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" target="_blank" class="h4 text-success">Washingon Kastles visit the White House</a>
+                  <small class="block">For the first time in the 38-year history of the WTT, the title team met the president.</small>
+                </div>
+              </article>
+ 
+                <div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2013/05/20/actavis-buys-warner-chilcott/2326167/" target="_blank" class="h4 text-success">Actavis buying Warner Chilcott in $8.5B deal</a>
+                  <small class="block">Acquisition creates third-biggest specialty pharmaceutical company in U.S.</small>
+                </div>
+              </article>
+ 
+                <div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/sports/tennis/2013/07/28/kastles-win-3rd-consecutive-world-teamtennis-title/2595061/" target="_blank" class="h4 text-success">Kastles win 3rd consecutive World TeamTennis title</a>
+                  <small class="block">The Kastles defeated the Lasers 25-12 on Sunday night in the Mylan World TeamTennis finals.</small>
+                </div>
+              </article>
+ 
+<div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                  </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2014/07/14/stocks-monday/12617719/" target="_blank" class="h4 text-success">Stocks close higher, Dow leaps back above 17,000</a>
+                  <small class="block">Investors were encouraged by a slew of megadeals and better-than-expected earnings.</small>
+                </div>
+              </article>
+ 
+<div class="line pull-in"></div>
+              <article class="media">
+                <div class="pull-left thumb-small">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                    <i class="fa fa-star fa-stack-1x text-white"></i>
+                 </span>
+                </div>
+                <div class="media-body">
+                  <div class="pull-right media-mini text-center text-muted">
+                    <strong class="h4">09</strong><br>
+                    <small class="label bg-light">jan</small>
+                  </div>
+                  <a href="http://www.usatoday.com/story/money/business/2014/07/14/stocks-monday/12617719/" target="_blank" class="h4 text-success">Stocks close higher, Dow leaps back above 17,000</a>
+                  <small class="block">Investors were encouraged by a slew of megadeals and better-than-expected earnings.</small>
+                </div>
+              </article>
+            </section>
+          </section>
+          <!-- / scrollable inbox widget-->
+            </div>
+
+
+
+            <div class="col-xs-4">
+          <section class="panel">
+            <header class="panel-heading"><a href="/markets.html">Market Intelligence</a></header>
+            <div>
+              <table style="height:275px; width:100%" class="table table-striped m-b-none text-small">
+                <thead>
+                  <tr>
+                    <th>Graph</th>
+                    <th>Region</th>
+                    <th>Doses</th>
+                    <!-- <th>$</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>                    
+                    <td>
+                      <div class="sparkline" data-bar-color="#5cb85c" data-type="bar" data-height="19"><!--20,10,15,21,12,5,21,30,24,27,29,32--></div>
+                    </td>
+                    <td><a href="/markets.html">North America</a></td>
+                    <td class="text-success">
+                      <i class="fa fa-level-up"></i> 22B
+                    </td>
+                    <!-- <td class="text-success">
+                      <i class="fa fa-level-up"></i> 3B
+                    </td> -->
+                  </tr>
+                  <tr>                    
+                    <td>
+                      <div class="sparkline" data-bar-color="#61a1e1" data-type="bar" data-height="19"><!--,10,31,30,24,24,28,26,20,22,20,25,37--></div>
+                    </td>
+                    <td><a href="/markets.html">Europe</a></td>
+                    <td class="text-success">
+                      <i class="fa fa-level-up"></i> 34B
+                    </td>
+                   <!--  <td class="text-warning">
+                      <i class="fa fa-level-up"></i> 2.5B
+                    </td> -->
+                  </tr>
+                  <tr>                    
+                    <td>
+                      <div class="sparkline" data-bar-color="#999900" data-type="bar" data-height="19"><!--30,40,50,10,9,12,15,10,8,5,8,5--></div>
+                    </td>
+                    <td><a href="/markets.html">India & Emerging Markets</a></td>
+                    <td class="text-warning">
+                      <i class="fa fa-level-down"></i> 5B
+                    </td>
+                 <!--    <td class="text-danger">
+                      <i class="fa fa-level-down"></i> 1.5B
+                    </td> -->
+                  </tr>
+                  <tr>                    
+                    <td>
+                      <div class="sparkline" data-bar-color="#ff5f5f" data-type="bar" data-height="19"><!--15,21,30,24,15,8,19,20,10,15,12,8--></div>
+                    </td>
+                    <td><a href="/markets.html">Rest Of World</a></td>
+                    <td class="text-danger">
+                      <i class="fa fa-level-down"></i> 8B
+                    </td>
+                   <!--  <td class="text-success">
+                      <i class="fa fa-level-down"></i> 1B
+                    </td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+            </div>
+            <!-- easypiechart end-->
+          </div>
+
+
+
+
+          <!--<section class="panel">
+            <div class="panel-body text-muted l-h-2x">
+              <span class="badge">3,3121</span>
+              <span class="m-r-small">Orders</span>
+              <span class="badge bg-success">25,129</span>
+              <span class="m-r-small">Selling Items</span>
+              <span class="badge">59,973</span>
+              <span class="m-r-small">Items</span>
+              <span class="badge">3,141</span> Customers
+            </div>
+          </section>
+        </div>-->
+
+
+
+
+
+
+
+
+        
+
+
+
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading"><a href="#" style="hover{color:Red;}" onclick="setURL('/heatmap2.html')">7 Billion</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="setURL('/heatmap.html')">Mylan Employees</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="setURL('/heatmap3.html')">Mylan Reach</a></header>
+              <div class="panel-body">
+              <iframe id="iframe" src="/heatmap2.html" width="100%" height="402" style="border:none"></iframe>
+              </div>
+            </section>
+          </div>
+
+
+
+
+      </div>
+    </section>
+  </section>
+  <!-- .modal -->
+  <div id="modal" class="modal fade">
+    <form class="m-b-none">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Post your first idea</h4>
+          </div>
+          <div class="modal-body">          
+            <div class="block">
+              <label class="control-label">Title</label>
+              <input type="text" class="form-control" placeholder="Post title">
+            </div>
+            <div class="block">
+              <label class="control-label">Content</label>
+              <textarea class="form-control" placeholder="Content" rows="5"></textarea>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Share with all memebers of first
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-sm btn-primary" data-loading-text="Publishing...">Publish</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </form>
+  </div>
+  <!-- / .modal -->
+  <!-- footer -->
+  <footer id="footer">
+    <!--<div class="text-center padder clearfix">
+      <p>
+        <small>&copy; first 2013, Mobile first web app framework base on Bootstrap</small><br><br>
+        <a href="#" class="btn btn-xs btn-circle btn-twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="btn btn-xs btn-circle btn-facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="btn btn-xs btn-circle btn-gplus"><i class="fa fa-google-plus"></i></a>
+      </p>
+    </div>-->
+  </footer>
+  <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
+  <!-- / footer -->
+	<script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.js"></script>
+  <!-- app -->
+  <script src="js/app.js"></script>
+  <script src="js/app.plugin.js"></script>
+  <script src="js/app.data.js"></script>
+
+  <!-- Sparkline Chart -->
+  <script src="js/charts/sparkline/jquery.sparkline.min.js"></script>  
+  <!-- Easy Pie Chart -->
+  <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script>  
+
+  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script src="js/maps/gmaps.js"></script>
+  <script src="js/maps/demo.js"></script>
+  <script>
+function setURL(url){
+    document.getElementById('iframe').src = url;
+}
+</script>
+</body>
+</html>
